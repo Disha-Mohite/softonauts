@@ -71,11 +71,11 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onResponse(Call<SrvRes<User>> call, Response<SrvRes<User>> response) {
                 if (response.isSuccessful()) {
-                    if (response.body() != null && response.body().isSuccess() && response.body().getData() != null && response.body().getData().size() > 0) {
+
 
                         startActivity(new Intent(SignInActivity.this, MainActivity.class));
                         finish();
-                    }
+
                 } else {
                     Toast.makeText(getApplicationContext(),"API Error",Toast.LENGTH_LONG).show();
                 }

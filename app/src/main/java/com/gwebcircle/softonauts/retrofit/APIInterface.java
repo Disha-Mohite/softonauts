@@ -14,13 +14,13 @@ public interface APIInterface {
 
     @FormUrlEncoded
     @POST("Android/register-user")
-    Call<SrvRes<User>> registerUser(@Header("Authorization") String authorizekey,
+    Call<Void> registerUser(@Header("Authorization") String authorizekey,
                                     @Field("first_name") String firstname,
                                     @Field("middle_name") String middlename,
                                     @Field("last_name") String lastname,
                                     @Field("dob") String dob,
                                     @Field("gender") String gender,
-                                    @Field("contact") String contact,
+                                    @Field("contact_number") String contact,
                                     @Field("email") String email,
                                     @Field("address_one") String addresstwo,
                                     @Field("adderss_two") String addressone,

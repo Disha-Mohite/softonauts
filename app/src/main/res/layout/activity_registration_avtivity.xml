@@ -175,6 +175,7 @@
                         android:layout_marginBottom="15dp"
                         android:background="@drawable/edit_back_layout"
                         android:hint="Birth Date"
+                        android:inputType="date"
                         android:paddingStart="5dp" />
 
                     <TextView
@@ -216,6 +217,8 @@
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="2dp"
                         android:layout_marginEnd="20dp"
+                        android:maxLength="4"
+                        android:inputType="number"
                         android:layout_marginBottom="15dp"
                         android:background="@drawable/edit_back_layout"
                         android:hint="@string/ssn_last_4_digit"
@@ -241,9 +244,11 @@
                         android:layout_marginBottom="15dp"
                         android:background="@drawable/edit_back_layout"
                         android:hint="Address 1"
+                        android:maxLines="2"
                         android:paddingStart="5dp" />
 
                     <TextView
+
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
@@ -263,6 +268,7 @@
                         android:layout_marginBottom="15dp"
                         android:background="@drawable/edit_back_layout"
                         android:hint="Address2"
+                        android:maxLines="2"
                         android:paddingStart="5dp" />
 
                     <TextView
@@ -271,6 +277,7 @@
                         android:layout_marginStart="20dp"
                         android:layout_marginEnd="20dp"
                         android:text="City"
+                        android:maxLines="1"
                         android:textColor="@color/black_light"
                         android:textSize="13sp" />
 
@@ -300,6 +307,7 @@
                         android:id="@+id/state"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
+                        android:maxLines="1"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="2dp"
@@ -330,6 +338,8 @@
                         android:layout_marginBottom="15dp"
                         android:background="@drawable/edit_back_layout"
                         android:hint="Zipcode"
+                        android:maxLines="1"
+                        android:inputType="number"
                         android:paddingStart="5dp" />
 
                     <TextView

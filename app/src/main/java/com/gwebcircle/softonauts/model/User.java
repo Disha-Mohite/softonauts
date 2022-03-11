@@ -6,6 +6,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class User {
 
+
+    @JsonProperty("id")
+    public int id;
+
+    @JsonProperty("fk_user_type_id")
+    public int fkusertypeid;
+
+    @JsonProperty("fk_org_id")
+    public int fkorgid;
+
+    @JsonProperty("fk_branch_id")
+    public int fkbranchid;
+
+    @JsonProperty("primary_fk_org_id")
+    public int primaryfkorgid;
+
     @JsonProperty("first_name")
     public String firstname;
 

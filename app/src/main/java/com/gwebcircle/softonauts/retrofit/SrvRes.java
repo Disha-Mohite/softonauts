@@ -5,8 +5,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 public class SrvRes<T> {
+    @JsonProperty("code")
+    private int code;
 
-    @JsonProperty("success")
+    @JsonProperty("status")
     private boolean success;
 
     @JsonProperty("message")
