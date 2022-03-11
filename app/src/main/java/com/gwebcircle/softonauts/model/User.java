@@ -24,7 +24,7 @@ public class User {
     @JsonProperty("contact")
     public String contact;
 
-    @JsonProperty("email")
+    @JsonProperty("contact_email")
     public String email;
 
     @JsonProperty("address_one")

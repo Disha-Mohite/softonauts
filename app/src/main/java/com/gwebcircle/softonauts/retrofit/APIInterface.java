@@ -10,9 +10,31 @@ import retrofit2.http.POST;
 
 public interface APIInterface {
 
+    String AUTHORIZE_KEY = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.By2r2BwheJsbrEGrHOaMQwrrmlY7wHVFzWtuEmv39fM";
+
     @FormUrlEncoded
-    @POST("restaurantPartner/order-filter")
-    Call<SrvRes<User>> registerUser(@Field("first_name") String firstname,
-                                        @Field("middle_name") String middlename,
-                                        @Field("last_name") String lastname);
+    @POST("Android/register-user")
+    Call<SrvRes<User>> registerUser(@Header("Authorization") String authorizekey,
+                                    @Field("first_name") String firstname,
+                                    @Field("middle_name") String middlename,
+                                    @Field("last_name") String lastname,
+                                    @Field("dob") String dob,
+                                    @Field("gender") String gender,
+                                    @Field("contact") String contact,
+                                    @Field("email") String email,
+                                    @Field("address_one") String addresstwo,
+                                    @Field("adderss_two") String addressone,
+                                    @Field("city") String city,
+                                    @Field("state") String state,
+                                    @Field("zipcode") int zipcode,
+                                    @Field("password") String password,
+                                    @Field("login_type") String logintype,
+                                    @Field("ssn_digits") int ssndigit);
+
+    @FormUrlEncoded
+    @POST("Android/user-login")
+    Call<SrvRes<User>> loginUser(@Header("Authorization") String authorizekey,
+                                    @Field("username") String firstname,
+                                    @Field("password") String middlename,
+                                    @Field("fcm_id") String lastname);
 }
