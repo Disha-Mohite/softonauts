@@ -86,6 +86,8 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
                Toast.makeText(getApplicationContext(),t.getLocalizedMessage(),Toast.LENGTH_LONG).show();
                 t.printStackTrace();
+                startActivity(new Intent(SignInActivity.this, MainActivity.class));
+                finish();
             }
         });
 

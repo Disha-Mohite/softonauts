@@ -1,5 +1,7 @@
 package com.gwebcircle.softonauts.retrofit;
 
+import com.gwebcircle.softonauts.model.DropInNavigator;
+import com.gwebcircle.softonauts.model.Slots;
 import com.gwebcircle.softonauts.model.User;
 
 import retrofit2.Call;
@@ -34,7 +36,17 @@ public interface APIInterface {
     @FormUrlEncoded
     @POST("Android/user-login")
     Call<SrvRes<User>> loginUser(@Header("Authorization") String authorizekey,
-                                    @Field("username") String firstname,
-                                    @Field("password") String middlename,
-                                    @Field("fcm_id") String lastname);
+                                    @Field("username") String email,
+                                    @Field("password") String password,
+                                    @Field("fcm_id") String fcmid);
+
+    @FormUrlEncoded
+    @POST("Android/get-drop-in-navigator-list")
+    Call<DropInNavigator> getDropInList(@Header("Authorization") String authorizekey,
+                                                @Field("user_id") String userid);
+
+    @FormUrlEncoded
+    @POST("Android/get-time-slots")
+    Call<Slots> getTimeSlots(@Header("Authorization") String authorizekey,
+                             @Field("location_id") String userid);
 }

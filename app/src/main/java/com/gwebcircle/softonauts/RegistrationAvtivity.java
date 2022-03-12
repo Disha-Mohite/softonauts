@@ -240,7 +240,7 @@ public class RegistrationAvtivity extends AppCompatActivity implements View.OnCl
             });
 
         }catch(Exception e){
-            Toast.makeText(getApplicationContext(), String.valueOf(e.toString()),Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), e.toString(),Toast.LENGTH_LONG).show();
 
             e.printStackTrace();
         }
