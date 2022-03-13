@@ -61,20 +61,36 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void onSignin() {
+        String username = email.getText().toString();
+        String passwd = password.getText().toString();
+        if (username.isEmpty()){
+            email.setError("Field Mandatory");
+            return;
+        }
+
+
+        if (passwd.isEmpty()) {
+            password.setError("Field Mandatory");
+            return;
+        }
+        signinn();
+
+    }
+
+    private void signinn() {
         butsign.setEnabled(false);
 
-       String username = email.getText().toString();
-       String passwd = password.getText().toString();
-       String fcmid = "";
+        String username = email.getText().toString();
+        String passwd = password.getText().toString();
+        String fcmid = "";
         Call<SrvRes<User>> call = RetrofitClient.getInterface().loginUser(APIInterface.AUTHORIZE_KEY,username, passwd, fcmid);
         call.enqueue(new Callback<SrvRes<User>>() {
             @Override
             public void onResponse(Call<SrvRes<User>> call, Response<SrvRes<User>> response) {
                 if (response.isSuccessful()) {
 
-
-                        startActivity(new Intent(SignInActivity.this, MainActivity.class));
-                        finish();
+                    startActivity(new Intent(SignInActivity.this, MainActivity.class));
+                    finish();
 
                 } else {
                     Toast.makeText(getApplicationContext(),"API Error",Toast.LENGTH_LONG).show();
@@ -84,12 +100,10 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onFailure(Call<SrvRes<User>> call, Throwable t) {
 
-               Toast.makeText(getApplicationContext(),t.getLocalizedMessage(),Toast.LENGTH_LONG).show();
                 t.printStackTrace();
                 startActivity(new Intent(SignInActivity.this, MainActivity.class));
                 finish();
             }
         });
-
     }
 }

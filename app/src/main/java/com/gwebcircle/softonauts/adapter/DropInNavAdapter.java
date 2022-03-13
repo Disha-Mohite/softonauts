@@ -44,7 +44,7 @@ public class DropInNavAdapter extends RecyclerView.Adapter<DropInNavAdapter.Drop
 
 
         holder.textname.setText(dropinnav.navigatorname);
-        holder.textadrs.setText(dropinnav.getLocationid().get(0).toString());
+        holder.textadrs.setText(dropinnav.getNavigatorlocation().get(0).toString());
         holder.card.setOnClickListener(view -> {
             listener.onClickCard(dropinnav);
         });

@@ -85,10 +85,10 @@ public class MainActivity extends AppCompatActivity
     public void onClickCard(DropInNavigatorTwo dropinnav) {
       String dronavname = dropinnav.navigatorname;
 
-            Toast.makeText(getApplicationContext(),dronavname,Toast.LENGTH_LONG).show();
+
 
    startActivity(new Intent(MainActivity.this, NavigatorDetailsActivity.class)
-           .putExtra(NavigatorDetailsActivity.PASS_REST_PARCEL, (Parcelable) dropinnav));
+           .putExtra(NavigatorDetailsActivity.PASS_DROPIN_PARCEL, (Parcelable) dropinnav));
 
 
 

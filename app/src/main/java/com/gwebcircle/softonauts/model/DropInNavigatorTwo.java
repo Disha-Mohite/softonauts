@@ -1,5 +1,9 @@
 package com.gwebcircle.softonauts.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -7,8 +11,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class DropInNavigatorTwo {
+public class DropInNavigatorTwo implements Parcelable {
 
+    public static final Creator<DropInNavigatorTwo> CREATOR = new Creator<DropInNavigatorTwo>() {
+        @Override
+        public DropInNavigatorTwo createFromParcel(Parcel in) {
+            return new DropInNavigatorTwo(in);
+        }
+
+        @Override
+        public DropInNavigatorTwo[] newArray(int size) {
+            return new DropInNavigatorTwo[size];
+        }
+    };
     @JsonProperty("navigator_name")
     public String navigatorname;
 
@@ -26,6 +41,7 @@ public class DropInNavigatorTwo {
 
     @JsonProperty("appointment_type")
     private ArrayList<AppointmentType> appointmenttype = null;
+
 
     public List<String> getLocationid() {
         return locationid;
@@ -65,5 +81,40 @@ public class DropInNavigatorTwo {
 
     public void setAppointmenttype(ArrayList<AppointmentType> appointmenttype) {
         this.appointmenttype = appointmenttype;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+    @JsonCreator
+    public DropInNavigatorTwo() {
+    }
+
+    public DropInNavigatorTwo(String navigatorname, List<String> locationid, List<String> navigatorlocation, List<String> navigatorcity, List<String> navigatorzipcode, ArrayList<AppointmentType> appointmenttype) {
+        this.navigatorname = navigatorname;
+        this.locationid = locationid;
+        this.navigatorlocation = navigatorlocation;
+        this.navigatorcity = navigatorcity;
+        this.navigatorzipcode = navigatorzipcode;
+        this.appointmenttype = appointmenttype;
+    }
+
+    protected DropInNavigatorTwo(Parcel in) {
+
+        navigatorname = in.readString();
+        locationid = in.createStringArrayList();
+        navigatorlocation = in.createStringArrayList();
+        navigatorcity = in.createStringArrayList();
+        navigatorzipcode = in.createStringArrayList();
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(navigatorname);
+        parcel.writeStringList(locationid);
+        parcel.writeStringList(navigatorlocation);
+        parcel.writeStringList(navigatorcity);
+        parcel.writeStringList(navigatorzipcode);
     }
 }

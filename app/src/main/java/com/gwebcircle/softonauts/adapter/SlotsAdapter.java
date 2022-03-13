@@ -4,23 +4,26 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.gwebcircle.softonauts.NavigatorDetailsActivity;
 import com.gwebcircle.softonauts.R;
+import com.gwebcircle.softonauts.model.Slots;
 import com.gwebcircle.softonauts.model.TimeSlots;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SlotsAdapter extends RecyclerView.Adapter<SlotsAdapter.SlotsViewHolder> {
 
     private Context context;
-    private ArrayList<TimeSlots> timeslotslist;
+    private ArrayList<Slots> timeslotslist;
     private SlotsAdapterListener listener;
 
-    public SlotsAdapter(Context context, ArrayList<TimeSlots> timeslotslist, SlotsAdapterListener listener) {
+    public SlotsAdapter(Context context, ArrayList<Slots> timeslotslist, SlotsAdapterListener listener) {
         this.context = context;
         this.timeslotslist = timeslotslist;
         this.listener = listener;
@@ -35,6 +38,22 @@ public class SlotsAdapter extends RecyclerView.Adapter<SlotsAdapter.SlotsViewHol
 
     @Override
     public void onBindViewHolder(@NonNull SlotsViewHolder holder, int position) {
+      Slots timeslots = timeslotslist.get(position);
+        String slottext = null;
+
+        holder.texttime.setText(timeslots.getShowdate());
+
+      ArrayList<TimeSlots> tmslts = new ArrayList<>();
+        List<String> monlistt = new ArrayList<>();
+      tmslts = timeslots.getSlots();
+
+          holder.textslots.setText("No Slots Available");
+
+
+
+          holder.linecard.setOnClickListener(view -> {
+              listener.onClickslot(timeslotslist.get(position));
+          });
 
     }
 
@@ -45,12 +64,19 @@ public class SlotsAdapter extends RecyclerView.Adapter<SlotsAdapter.SlotsViewHol
 
     class SlotsViewHolder extends RecyclerView.ViewHolder{
 
+        private TextView texttime;
+        private TextView textslots;
+        private LinearLayout linecard;
+
         public SlotsViewHolder(@NonNull View itemView) {
             super(itemView);
+            texttime = itemView.findViewById(R.id.time);
+            textslots = itemView.findViewById(R.id.slots);
+            linecard = itemView.findViewById(R.id.slotcard);
         }
     }
 
     public interface  SlotsAdapterListener{
-        void onClickslot();
+        void onClickslot(Slots slots);
     }
 }
